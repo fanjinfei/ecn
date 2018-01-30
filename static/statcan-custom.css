@@ -1,0 +1,59 @@
+.wb-sec-def [data-role="list-divider"] {
+	background:none repeat scroll 0 0 #DDDDDD;
+	color:#333333;
+	display:block;
+	font-weight:700;
+	padding:2px 4px;
+}
+
+/* Sets table default background colour to white*/
+.mb-menu [data-role="list-divider"] {
+	color: #000000;
+	display: block;
+    font-weight: 700;
+    padding: 0.45em 1.17em 0.45em 0.79em;
+	text-align: left;
+	text-decoration: none;
+}
+
+/* Sets table default background colour to white*/
+table {
+	background-color:#FFFFFF;
+}
+
+/* STEPH_CUSTOM-START */
+h3 a.nodeco, a.nodeco:active, a.nodeco:visited{
+	font-size:110%!important;
+	text-decoration: none!important;
+	background: none!important;
+	background-attachment:none!important;
+	background-color: none!important;
+	border:none!important;
+	}
+h3 a.nodeco:hover{
+	font-size:110%!important;
+	color:#FFF!important;
+	text-decoration:underline!important;
+	background: none!important;
+	background-attachment:none!important;
+	background-color: none!important;
+	border:none!important;
+	}
+h4 a.nodeco, a.nodeco:active, a.nodeco:visited{
+	font-size:110%!important;
+	text-decoration: none!important;
+	background: none!important;
+	background-attachment:none!important;
+	background-color: none!important;
+	border:none!important;
+	}
+h4 a.nodeco:hover{
+	font-size:110%!important;
+	color:#FFF!important;
+	text-decoration:underline!important;
+	background: none!important;
+	background-attachment:none!important;
+	background-color: none!important;
+	border:none!important;
+	}
+/* STEPH_CUSTOM-END */

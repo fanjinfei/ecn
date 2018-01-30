@@ -1,0 +1,118 @@
+h1 {
+  margin-top: 1.25em;
+}
+
+#filters h4 {
+  margin: 0px 0px;
+}
+
+#filters ul {
+  margin-bottom: 0em;
+}
+
+#filters ul li {
+  border-radius: 0px;
+}
+
+#filters .filter-active {
+  text-decoration: none;
+}
+
+#filters .wb-navcurr {
+  background-color: #146094;
+  color: #FFF;
+  font-weight: 400;
+  padding: 10px 0px 10px 10px;
+}
+
+#navbox {
+  height: 2em;
+  margin-bottom: 20px;
+  margin-top: -0.5em;
+  padding-top: 4px;
+}
+
+#noResults {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+#startResults {
+  border-top: 1px solid #af3c43;
+  height: 2em;
+}
+
+.wb-frmvld fieldset:first-of-type {
+  border-top: none;
+}
+
+.wb-frmvld fieldset h2 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.wb-frmvld .btn-toolbar {
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+#searchBreadcrumb .btn:first-of-type {
+  margin-left: 0px;
+}
+
+[data-name="docdate"] {
+  margin-top: 5px;
+}
+
+#results .dataTables_wrapper .dataTables_paginate {
+  padding: 0px;
+}
+
+.form-horizontal label {
+  padding: 0px 5px;
+}
+
+#typeOfSort label {
+  padding: 0px;
+}
+
+#searchBreadcrumb a {
+  display: block;
+  float: left;
+  clear: both;
+  text-align: left;
+}
+
+hr.drk-grey {
+  border-color: #999;
+  margin-top: 0.5em;
+}
+
+#typeOfSort label {
+  font-weight: normal;
+}
+
+#typeOfSort .h5 {
+  font-weight: normal;
+}
+
+#rdio label {
+  font-size: 18px;
+}
+
+#noResults .alert > p {
+  margin-bottom: 1em;
+}
+
+.results_description span.text-muted {
+  color: #555;
+}
+
+.xsmallview #typeOfSort .text-center,
+.xxsmallview #typeOfSort .text-center {
+  text-align: left;
+}
+
+#btryalso ul.list-unstyled li {
+  display: inline;
+}

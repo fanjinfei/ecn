@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>{{ _('search') }}</title>
+   <link rel="stylesheet" href="/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/css/bootstrap-multiselect.css">
+   <link rel="stylesheet" href="/css/web.css">
+  <!--link rel="stylesheet" href="/css/theme.min.css"-->
+  <link rel="stylesheet" href="/css/browse.css">
+ 
+
+<!--ECN> <!-->
+<link rel="stylesheet" href="/css/util-min.css" />
+<link rel="stylesheet" href="/css/pe-ap-min.css" />
+<link rel="stylesheet" href="/css/ecn_theme-min.css" />
+<link rel="stylesheet" href="/css/statcan-custom.css" />
+
+</head>
+
+<body class="statcan-bootstrap theme-gcweb html not-front not-logged-in no-sidebars page-node page-node- page-node-12399 node-type-statcan-basic-page i18n-en"><div id="wb-body-sec">
+
+{% if locale=='fr' %}
+  {% include 'header_ecn_fr.html' %}
+{% else %}
+  {% include 'header_ecn.html' %}
+{% endif %}
+
+<div id="content" class="container" >
+{% block search_content %}
+{% endblock %}
+
+{% if locale=='fr' %}
+  {% include 'footer_ecn_fr.html' %}
+{% else %}
+  {% include 'footer_ecn.html' %}
+{% endif %}
+
+<script type="text/javascript"
+		src="/static/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.js"></script>
+<script type="text/javascript" src="/static/bootstrap-multiselect.js"></script>
+<script type="text/javascript" src="/static/suggestor.js"></script>
+<script type="text/javascript">
+$(function () {
+    var b = 'http://dev-b-es-fusion01.stc.ca:8080';
+    b = '';
+    $("#query").suggestor({
+        ajaxinfo: {
+            url: b + "/suggest",
+            fn: "_default,content,title",
+            num: 10,
+            // lang: $("#langSearchOption").val()
+        },
+        boxCssInfo: {
+            border: "1px solid rgba(82, 168, 236, 0.5)",
+            "-webkit-box-shadow": "0 1px 1px 0px rgba(0, 0, 0, 0.1), 0 3px 2px 0px rgba(82, 168, 236, 0.2)",
+            "-moz-box-shadow": "0 1px 1px 0px rgba(0, 0, 0, 0.1), 0 3px 2px 0px rgba(82, 168, 236, 0.2)",
+            "box-shadow": "0 1px 1px 0px rgba(0, 0, 0, 0.1), 0 3px 2px 0px rgba(82, 168, 236, 0.2)",
+            "background-color": "#fff",
+            "z-index": "10000"
+        },
+        listSelectedCssInfo: {
+            "background-color": "rgba(82, 168, 236, 0.1)"
+        },
+        listDeselectedCssInfo: {
+            "background-color": "#ffffff"
+        },
+        minturm: 1,
+        adjustWidthVal: 11,
+        searchForm: $("#searchForm")
+    });
+});
+
+$(document).ready(function() {
+        $('#sub-search').multiselect();
+    });
+
+</script>
+<!--script src="/static/wet-boew.min.js"--><!--/script-->
+<script src="/static/browse.js"></script>
+
+<script src="/static/settings.js"></script>
+<script src="/static/theme-min.js"></script>
+
+<script src="/static/pe-ap-min.js"></script>
+
+
+  
+</div>
+</body>
+</html>

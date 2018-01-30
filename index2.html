@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>search</title>
+<link href="/css/style-base.css" rel="stylesheet"
+	type="text/css" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/static/font-awesome.min.css" rel="stylesheet"
+	type="text/css" />
+</head>
+<body class="search">
+<form action="{{ url_for('search', lang_code=locale) }}" id="searchForm" method='get'>
+  <nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+  <div class="search-box navbar-form col-lg-5 col-md-6 col-sm-6 col-xs-8"
+			role="search">
+    <p> {{ _('search') }}
+    <input name='q' size=30 id="query" class="form-control" autocomplete="off">
+  </div></nav>
+</form>
+<p>
+
+<div id="content" class="container">
+{% if res %}
+  <div class="row"> <div class="col-md-12">
+  <br>
+  Total: {{ res.record_count }} <br>
+  </div> </div>
+  {% for i in range(0, res['result']|count) %}
+  <div class="col-md-8">
+    <p>
+    {% set item=res['result'][i] %}
+    {{i+1}}: <a href="{{item.url}}">{{ item.title }}</a> <br>
+    {{ item.content_description| safe }}<br>
+    crawled:{{ item.created[:10] }} page modified: {{ item.last_modified }} <br>
+  </div>
+  {% endfor %}
+{% endif %}
+</div>
+
+<script type="text/javascript"
+		src="/static/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.js"></script>
+<script type="text/javascript" src="/static/suggestor.js"></script>
+<script type="text/javascript">
+$(function () {
+    var b = 'http://dev-b-es-fusion01.stc.ca:8080';
+    b = '';
+    $("#query").suggestor({
+        ajaxinfo: {
+            url: b + "/suggest",
+            fn: "_default,content,title",
+            num: 10,
+            // lang: $("#langSearchOption").val()
+        },
+        boxCssInfo: {
+            border: "1px solid rgba(82, 168, 236, 0.5)",
+            "-webkit-box-shadow": "0 1px 1px 0px rgba(0, 0, 0, 0.1), 0 3px 2px 0px rgba(82, 168, 236, 0.2)",
+            "-moz-box-shadow": "0 1px 1px 0px rgba(0, 0, 0, 0.1), 0 3px 2px 0px rgba(82, 168, 236, 0.2)",
+            "box-shadow": "0 1px 1px 0px rgba(0, 0, 0, 0.1), 0 3px 2px 0px rgba(82, 168, 236, 0.2)",
+            "background-color": "#fff",
+            "z-index": "10000"
+        },
+        listSelectedCssInfo: {
+            "background-color": "rgba(82, 168, 236, 0.1)"
+        },
+        listDeselectedCssInfo: {
+            "background-color": "#ffffff"
+        },
+        minturm: 1,
+        adjustWidthVal: 11,
+        searchForm: $("#searchForm")
+    });
+});
+</script>
+</body>
+</html>

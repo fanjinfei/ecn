@@ -1,0 +1,501 @@
+
+<div id="wb-head"><div id="wb-head-in"><header>
+<!-- HeaderStart -->
+<nav role="navigation"><div id="gcwu-gcnb"><h2>Barre de navigation intranet</h2><div id="gcwu-gcnb-in"><div id="gcwu-intranetnb"><div id="gcwu-intranetnb-in">
+<ul>
+<!-- navbar_top DEBUT -->
+<li id="gcwu-gcnb1"><a href="mailto:ICN-RCI?Subject=Contactez-nous - RCI commentaires">&nbsp;&nbsp;Contactez le RCI</a></li>
+<li id="gcwu-gcnb2"><a href="http://srm/CreateSR.aspx?Env=20">Soumettez une <abbr title="demande de service">DS</abbr> au RCI</a></li>
+<!-- navbar_top FIN -->
+<li id="gcwu-gcnb3"><a href="http://www.statcan.gc.ca/start-debut-fra.html">Statistique Canada</a></li>
+{% block language_link %}
+{% if locale=='fr' %}
+  <li id="gcwu-gcnb-lang"><a href="{{ url_for('ecn_search', lang_code='en') }}" lang="en">English</a></li>
+{% else %}
+  <li id="gcwu-gcnb-lang"><a href="{{ url_for('ecn_search', lang_code='fr') }}" lang="fr">Fran&#231;ais</a></li>
+{% endif %}
+{% endblock %}
+</ul>
+</div></div>
+<div id="gcwu-gcnb-fip">
+<div id="gcwu-sig"><div id="gcwu-sig-in"><!--<object data="/WBICNRCI/dist/theme-gcwu-intranet/images/sig-blk-fr.svg" role="img" tabindex="-1" aria-label="Gouvernement du Canada" type="image/svg+xml">--><img src="/static/sigstc-fra.png" alt="Statistique Canada" /><!--</object>--></div></div>
+<div id="gcwu-wmms"><div id="gcwu-wmms-in"><object data="/WBICNRCI/dist/theme-gcwu-intranet/images/wmms-intra.svg" role="img" tabindex="-1" aria-label="Symbole du Gouvernement du Canada" type="image/svg+xml"><img src="/static/wmms-alt.png" alt="Symbole du Gouvernement du Canada" /></object></div></div>
+</div></div></div></nav>
+<div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in">
+<div id="gcwu-title"><p id="gcwu-title-in"><a href="/rcicn_r000-fra.html">
+R&eacute;seau de communications externes
+
+</a></p></div>
+
+<!-- incl. Search DEBUT -->
+<!--<section role="search"><div id="gcwu-srchbx"><h2>Recherche</h2>
+<form action="http://www40.statcan.ca:8089/cbin/francais/sw1/sw2.cgi" method="get">
+<div id="gcwu-srchbx-in">
+<label for="icnSrch">Recherche dans le RCI</label><input id="icnSrch" name="se" type="Search" value="" size="27" maxlength="150" />
+<input type="hidden" />
+<input id="gcwu-srch-submit" type="submit" value="Recherche" />
+</div></form>
+</div></section>-->
+<!-- incl. Search FIN -->
+
+</div></div>
+
+<!-- incl. Mega Menu DEBUT -->
+<nav role="navigation">
+<div id="gcwu-psnb"><h2>Menu du site</h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
+<ul class="mb-menu" data-ajax-replace="/wet-boew/includes/menu-fr.txt">
+
+﻿<li>
+  <section>
+    <h3><a href="/35/35_000-fra.html">Le Carrefour&nbsp;</a></h3>
+    <div class="mb-sm span-8">
+      <div class="span-8">
+        <section>
+          <h4 class="margin-top-none background-medium font-medium"><a href="/35/35_000-fra.html" class="nodeco">Aller &agrave; la page du Carrefour</a></h4>
+        </section>
+      </div>
+      <div class="span-2 row-start">
+        <section>
+          <h4 class="margin-top-none margin-left-large font-medium"><a href="/35/35a/35a_000-fra.html" class="nodeco"><strong>Moi</strong></a></h4>
+          <ul>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a1">Services administratifs</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a2">Prix et reconnaissance</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a3">Avancement professionnel</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a4">&Eacute;quit&eacute; en mati&egrave;re d'emploi</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35b/35b_036-fra.html">Services d&rsquo;urgence</a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a17">Santé et sécurité au travail</a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a14" title="Système de gestion du temps (SGT)">Système de gestion du temps <abbr title="Syst&agrave;me de gestion du temps">(SGT)</abbr></a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a5">Apprentissage et perfectionnement</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a6">Cong&eacute;s et conditions de travail</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a10">Langues officielles</a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a8">Salaire et avantages sociaux</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a11">Services de s&eacute;curit&eacute;</a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a9">Services de soutien</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a7">Voyages</a> </li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a7">Quitter Statistique Canada</a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a15">Générer ou demander un rapport</a></li>
+            <li class="line-height-small margin-left-large"><a href="/35/35a/35a_000-fra.html#a16">Demander l’accès aux données ou à un système dans le Système de demande d’accès de l’organisme</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-2">
+        <section>
+          <h4 class="margin-top-none font-medium"><a href="/35/35b/35b_000-fra.html" class="nodeco"><strong>Mon milieu de travail</strong></a></h4>
+          <ul>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a1">Ordinateurs et mat&eacute;riel de bureau</a> </li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a2">Services de conf&eacute;rences et services multim&eacute;dias</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a3">R&eacute;parations aux immeubles, nettoyage et temp&eacute;rature</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_036-fra.html">Services  d&rsquo;urgence</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a11">Santé et sécurité au travail</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a4">Conception de bureau</a> </li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a5">Mobilier de bureau</a> </li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a6">Fournitures de bureau</a> </li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a7">Services de s&eacute;curit&eacute;</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a8">Services t&eacute;l&eacute;phoniques</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_000-fra.html#a10">Afficher une annonce</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-2">
+        <section>
+          <h4 class="margin-top-none font-medium"><a href="/35/35c/35c_000-fra.html" class="nodeco"><strong>Mon travail</strong></a></h4>
+          <ul>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a7">Planifier et gérer mon travail</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a6">Planifier mon projet &agrave; frais recouvrables</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a4">Besoins en personnel</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a9">Faire des achats</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a5">Demander des services</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a11">Voyages</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a10">D&eacute;l&eacute;gation des pouvoirs</a></li>
+            <li class="line-height-small"><a href="/35/35c/35c_000-fra.html#a12">Demander l’accès aux données ou à un système dans le Système de demande d’accès de l’organisme</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-2 row-end">
+        <section>
+          <h4 class="margin-top-none font-medium"><a href="/35/35d/35d_000-fra.html" class="nodeco"><strong>Mon personnel</strong></a></h4>
+          <ul>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a1">Besoins en personnel</a> </li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a12">Effectuer la promotion d’un employé au sein d’un programme de recrutement et de perfectionnement</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a2" title="Apporter des modifications &agrave; mon organisation (y compris les organigrammes)">Apporter des modifications &agrave; mon organisation</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a9">Soutenir mes employés</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a8">Perfectionnement du personnel</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a5">Accueillir un nouvel employ&eacute;</a> </li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a3">Départ d&rsquo;un employé</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a7">Mes responsabilit&eacute;s en tant que gestionnaire</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a4">Cong&eacute;s et conditions de travail</a></li>
+            <li class="line-height-small"><a href="/35/35b/35b_036-fra.html">Services  d&rsquo;urgence</a></li>
+            <li class="line-height-small"><a href="/35/35d/35d_012-fra.html">Obtenir un organigramme</a> </li>
+            <li class="line-height-small"><a href="/35/35d/35d_000-fra.html#a10">Générer ou demander un rapport</a> </li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+<!-- END button 1-->
+<li>
+  <section>
+    <h3><a href="/07/07_000-fra.html">Ressources humaines&nbsp;</a></h3>
+    <div class="mb-sm span-6">
+      <div class="span-6">
+        <section>
+          <h4 class="margin-top-none background-medium font-medium"><a href="/07/07_000-fra.html" class="nodeco">Aller à la page des <abbr title="Ressources Humaines">RH</abbr></a></h4>
+        </section>
+      </div>
+      <div class="clear"></div>
+      <div class="span-3 row-start">
+        <section>
+          <h4 class="wb-invisible">Services des Ressources Humaines - Articles 1 &agrave; 7 de 14</h4>
+          <ul>
+            <li><a href="/07/0701/0701_000-fra.html">Mesures d’adaptation et gestion de l’incapacité</a></li>
+            <li><a href="/07/07q/07q_000-fra.html">Prix et attestations de reconnaissance</a></li>
+            <li><a href="/07/07b/07b_000-fra.html">Classification et organisation</a></li>
+            <li><a href="/07/07f/07f_000-fra.html">&Eacute;quit&eacute; en mati&egrave;re d'emploi et diversit&eacute;</a></li>
+            <li><a href="/07/07bb/07bb_000-fra.html">Services de la direction</a></li>
+            <li><a href="/07/0702/0702_000-fra.html">Planification et rapports des RH</a></li>
+            <li><a href="/07/0703/0703_000-fra.html">Relations de travail</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-3 row-end">
+        <section>
+          <h4 class="wb-invisible">Services des Ressources Humaines - Articles  8 &agrave; 14 de 14</h4>
+          <ul>
+            <li><a href="/07/07m/07m_000-fra.html">Apprentissage et formation</a></li>
+            <li><a href="/07/07h/07h_000-fra.html">Langues officielles</a></li>
+            <li><a href="/07/07c/07c_000-fra.html">R&eacute;mun&eacute;ration et avantages sociaux</a></li>
+            <li><a href="/07/07v/07v_000-fra.html">Excellence du rendement</a></li>
+            <li><a href="/07/07L/07L_000-fra.html">Ressourcement (dotation et affectations)</a></li>
+            <li><a href="/07/0705/0705_000-fra.html">Ressources en mieux-&ecirc;tre</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+      <hr class="margin-top-none margin-bottom-none">
+      <div class="span-3 row-start">
+        <section>
+          <h4 class="wb-invisible">Autres liens des Ressources Humaines - Articles  1 &agrave; 1 de 2</h4>
+          <ul>
+            <li><a href="/07/07e/07e_001-fra.html">Programme d'aide aux employés (PAE)</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-3 row-end">
+        <section>
+          <h4 class="wb-invisible">Autres liens des Ressources Humaines - Articles  2 &agrave; 2 de 2</h4>
+          <ul>
+            <li><a href="/07/07aa/07aa_000-fra.html">Services de gestion informelle des conflits (SGIC)</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+
+<!-- END button 2-->
+
+<li>
+  <section>
+    <h3><a href="http://informatics/F_side/">Informatique&nbsp;</a></h3>
+    <div class="mb-sm span-6">
+      <div class="span-6">
+        <section>
+          <h4 class="background-medium margin-bottom-none font-medium"><a href="http://informatics/F_side/" class="nodeco">Aller au site de la Direction de l'informatique</a></h4>
+        </section>
+      </div>
+      <div class="clear"></div>
+      <div class="span-2 row-start">
+        <section>
+          <h4 class="wb-invisible">Informatique - Articles  1 &agrave; 6 de 12</h4>
+          <ul>
+            <li><a href="http://informatics/F_side/">Voir alertes <abbr title="Technologies de l'information">TI</abbr></a></li>
+            <li><a href="http://informatics/F_side/Contact_Us/How_to_report_IT_problem.htm">Signaler un  problème de TI</a></li>
+            <li><a href="http://informatics/F_side/employees/Configuration_printers_Networks_A_B.htm">Configurer des imprimantes sur les réseaux A et B</a></li> 
+            <li><a href="http://informatics/F_side/employees/equipment_request_approval_process.htm">Faire une demande d’équipement informatique supplémentaire</a></li>
+            <li><a href="http://informatics/F_side/Security/Device_Control/Device_Control.htm">Contrôle des dispositifs USB</a></li>
+            <li><a href="http://informatics/F_side/Users@home/users@home.htm">Utilisateurs@domicile</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-2">
+        <section>
+          <h4 class="wb-invisible">Informatique - Articles  7 &agrave; 12 de 12</h4>
+          <ul>
+            <li><a href="http://informatics/F_side/Managers/IT%20Plan/StatCanITPlan2014-15_F.pdf">&nbsp;&nbsp;Plan des technologies de l'information de l’organisme</a></li>
+            <li><a href="/888/888c/888c43/888c43_000-fra.html">Comité de l’architecture des technologies de l’information</a></li>
+            <li><a href="http://informatics/F_side/services/Service_Catalogue/ApplicationDevelopmentMaintenanceandSupport.htm">Services de développement, de maintenance et de soutien d'applications</a></li>
+            <li><a href="http://informatics/F_side/services/Service_Catalogue/e_Questionnaire.htm">Service de questionnaire électronique</a></li>
+            <li><a href="http://informatics/F_side/services/Service_Catalogue/Technical_Services_Elements/TSE_DBA_Hosting_IT_Advising.htm">Services d’hébergement</a></li>
+            <li><a href="http://informatics/F_side/Contact_Us/IT_Managers.htm">Gestionnaires de TI</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-2 row-end">
+        <section>
+          <h4 class="wb-invisible">Projets <abbr title="Technologie de l'information">TI</abbr> - Articles 1 &agrave; 5 de 5</h4>
+          <ul>          
+            <li><a href="http://informatics/F_side/Employees/NetB_Workstation_Replacement.htm">Instructions de préparation pour remplacement de poste de travail</a></li>
+            <li><a href="http://informatics/F_side/FAQ/New_Devices_Windows10/FAQ_Home.htm">FAQ à propos de la mobilité et de Windows 10</a></li>
+            <li><a href="http://informatics/F_side/SAS/SAS.htm">SAS@StatCan</a></li>
+            <li><a href="http://informatics/F_side/GenSys/GenSys.htm">Systèmes généralisés</a></li>
+            <li><a href="/22/22e/22e3/22e3_003c-fra.html">Système intégré de collecte et des opérations (SICO)</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+
+<!-- END button 3 -->
+
+<li>
+  <section>
+    <h3><a href="/30/30_000-fra.html">Finances&nbsp;</a></h3>
+    <div class="mb-sm span-3">
+      <div class="span-3">
+        <section>
+          <h4 class="background-medium margin-bottom-none font-medium"><a href="/30/30_000-fra.html" class="nodeco">Aller à la page des Finances</a></h4>
+        </section>
+      </div>
+      <div class="clear"></div>
+      <div class="span-3 row-start">
+        <section>
+          <h4 class="wb-invisible">Finances - Articles 1 &agrave; 6 de 6</h4>
+          <ul>
+            <li><a href="/30/30_003-fra.html">Division des services financiers et administratifs</a></li>
+            <li><a href="/30/30_007-fra.html">Division de la planification intégrée et financière</a></li>
+            <li><a href="/30/30_008-fra.html">Division de la divulgation financière</a></li>
+            <li><a href="/23/23_000-fra.html">Bureau de gestion des projets de l&rsquo;organisme (BGPO)</a></li>
+            <li><a href="/30/30_001-fra.html" title="Rapports externes de Finances">Rapports externes</a></li>
+            <li><a href="/30/30a/30a_000-fra.html" title="Outils de référence">Outils de référence</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+
+<!-- END button 4 -->
+<li>
+  <section>
+    <h3><a href="/24/24_000-fra.html">Outils&nbsp;</a></h3>
+    <div class="mb-sm span-6">
+      <div class="span-6">
+        <section>
+          <h4 class="background-medium margin-bottom-none font-medium"><a href="/24/24_000-fra.html" class="nodeco">Aller à la page des outils</a></h4>
+        </section>
+      </div>
+      <div class="clear"></div>
+      <div class="span-3 row-start">
+        <section>
+          <h4 class="wb-invisible">Outils - Articles 1 &agrave; 13 de 25</h4>
+          <ul>
+            <li><a href="/24/24b/24b_000-fra.html">Accessibilit&eacute;&nbsp;101</a></li>
+            <li><a href="http://informatics/F_side/">Alertes et outils de&nbsp;TI</a></li>
+            <li><a href="/24/24d/24d_000-fra.html">Amélioration de l&rsquo;expérience du client des services intégrés</a></li>
+            <!--<li><a href="http://www23.statcan.gc.ca/standards-normes/imdb-bmdi-fra.html">Base de m&eacute;tadonn&eacute;es int&eacute;gr&eacute;e (BMDI)</a></li>-->
+            <li><a href="/45/45f/45f01/45f01_000-fra.html">Biblioth&egrave;que</a></li>
+            <li><a href="/24/24a/24a_000-fra.html">Coffre &agrave; outil pour les gestionnaires</a></li>
+            <!--<li><a href="http://f6dwcsql/fr.stcwiki/index.php?title=Base_de_donn%C3%A9es_sur_le_commerce_international_canadien_de_marchandises_(CICM)">Commerce international canadien de marchandises (CICM)</a></li>-->
+            <li><a href="/31/31d/31d-20/31d-20_029-fra.html">Gabarits PowerPoint</a></li>
+            <li><a href="https://gcconnex.gc.ca/splash/">GCconnex</a></li>
+            <li><a href="/45/45a/45a_000-fra.html">GCDocs</a></li>
+            <!--<li><a href="http://srm/SRMHome.aspx" title="Gestion des demandes de service-Division des services de soutien int&eacute;gr&eacute;s">Portail <abbr title="Gestion des demandes de service">GDS</abbr></a></li>-->
+            <li><a href="/24/24_001-fra.html">Gestionnaires des modules pour le site Web de StatCan</a></li>
+            <li><a href="/24/24c/24c_000-fra.html">Guide de consultation rapide pour les documents de gouvernance sur l&rsquo;acc&egrave;s&nbsp;aux&nbsp;microdonn&eacute;es</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-3 row-end">
+        <section>
+          <h4 class="wb-invisible">Outils - Articles  14 &agrave; 25 de 25</h4>
+          <ul>
+            <li><em><a href="/10/10k/10k_000-fra.html">Guide de r&eacute;daction de Statistique Canada</a></em></li>
+            <!--<li><a href="https://jira.statcan.ca/secure/Dashboard.jspa"><strong>JIRA</strong></a></li>-->
+            <li><a href="/02/02_000-fra.html">Lignes directrices du <em>Quotidien</em></a></li>
+            <li><a href="/35/35a/35a_025-fra.html">Application Web de la r&eacute;mun&eacute;ration / maCL&Eacute;</a></li>
+            <li><a href="/28/28_000-fra.html">Mesures du site Web</a></li>
+            <li><a href="/24/24_000-fra.html#a01">Outils pour les enqu&ecirc;tes sp&eacute;ciales</a></li>
+            <li><a href="/18/18_006-fra.html">S&eacute;minaires de recherche divisionnaires</a></li>
+            <!--<li><a href="http://termatstat/trm_000-fra.htm">term@stat</a></li>
+            <li><a href="http://f3apache1/tpv2alpha/alpha-fra.html?lang=fra">TERMIUM Plus<sup>&reg;</sup></a></li>
+            <li><a href="http://www40.statcan.ca/cbin/comp5/bit2.cgi"><strong>TextComp (STCS)</strong></a></li>-->
+            <li><a href="https://email-courriel.canada.ca/"><strong>votre.courriel@canada.ca</strong></a></li>
+            <li><a href="https://pspm-grfp.tbs-sct.gc.ca/">Application GRFP</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+<!-- END button 5-->
+
+<li>
+  <section>
+    <h3><a href="/10/10_000-fra.html">Documents de r&eacute;f&eacute;rence&nbsp;</a></h3>
+    <div class="mb-sm span-3">
+      <div class="span-3">
+        <section>
+          <h4 class="background-medium margin-bottom-none font-medium"><a href="/10/10_000-fra.html" class="nodeco">Aller à la page des documents de r&eacute;f&eacute;rence</a></h4>
+        </section>
+      </div>
+      <div class="clear"></div>
+      <div class="span-3 row-start">
+        <ul>
+          <li><a href="/07/07_999-fra.html">Organigramme</a></li>
+		  <li><a href="/10/10b/10b_085-fra.html">Avis renseignements personnels</a></li>
+          <li><a href="/31/31_000-fra.html">Suite des politiques</a></li>
+          <li><a href="/10/10n/10n_000-fra.html">La gestion de la qualité à Statistique Canada</a></li>
+          <li><a href="/12/12c/12c_000-fra.html">Comit&eacute;s</a></li>
+          <li><a href="/10/10b/10b_083-fra.html">Confidentialit&eacute; et s&eacute;curit&eacute;</a></li>
+          <li><a href="/23/23_000-fra.html">Bureau de gestion des projets de l’organisme (BGPO)</a></li>
+          <!--<li><a href="http://www86.statcan.ca/w86-03/w86-03_000-fra.htm"><em>Manuel sur les données administratives</em></a></li>-->
+          <li><a href="/03/03f/03f_000-fra.html">Nominations sup&eacute;rieures</a></li>
+          <!--<li><a href="/12aspx/12aspx_000-fra.aspx">Liste des cadres sup&eacute;rieurs</a></li>-->
+          <li><em><a href="/10/10_006-fra.html">Loi sur la statistique</a></em></li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+<!-- END button 6 -->
+
+<!--<li>
+  <section>
+    <h3><a href="/13/13_000-fra.html">Sites intranet&nbsp;</a></h3>
+    <div class="mb-sm span-8">
+      <div class="span-8 background-medium">
+        <div class="span-6 row-start">
+          <section>
+            <h4 class="margin-bottom-none font-medium"><a href="/13/13_000-fra.html" class="nodeco">Aller à la page des sites intranet</a></h4>
+          </section>
+        </div>
+        <div class="span-2 row-end">
+          <section>
+            <h4 class="margin-bottom-none font-medium"><a href="/13/13_001-fra.html" class="nodeco">Aller à la page des portails</a></h4>
+          </section>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="span-3 row-start">
+        <section>
+          <h4 class="wb-invisible">Intranets - Articles 1 &agrave; 14 de 26</h4>
+          <ul>
+            <li class="margin-left-large"><a href="http://www90.statcan.ca/w90_r000-fra.htm">Acc&egrave;s aux microdonn&eacute;es (DAM)</a></li>
+            <li class="margin-left-large"><a href="http://www56.statcan.ca/w56_r000-fra.htm">Bureau g&eacute;n&eacute;ral de gestion des projets (BGGP)</a></li>
+            <li class="margin-left-large"><a href="http://rsid-dcdis/w115_r000-fra.htm">Commerce de d&eacute;tail et des industries de service (DCDIS)</a></li>
+            <li class="margin-left-large"><a href="http://www81.statcan.gc.ca/comm_r000-fra.htm">Communications (COMM)</a></li>
+            <li class="margin-left-large"><a href="http://meab-dcme/">Comptes macro&eacute;conomiques (DCME)</a></li>
+            <li class="margin-left-large"><a href="http://www88.statcan.ca/w88_r000-fra.htm">Comptes et statistique de l'environnement (DCSE)</a></li>
+            <li class="margin-left-large"><a href="http://nead-dcen/">Comptes &eacute;conomiques nationaux (DCEN)</a></li>
+            <li class="margin-left-large"><a href="http://www125.statcan.ca/w125_r000-fra.htm">Coopération internationale et des méthodes statistiques institutionnelles (DCIMSI)</a></li>
+            <li class="margin-left-large"><a href="http://www118.statcan.gc.ca/w118_r000-fra.htm">Démographie (DEM)</a></li>
+            <li class="margin-left-large"><a href="http://www84.statcan.gc.ca/w84_r000-fra.htm">Diffusion (DIFF)</a></li>
+            <li class="margin-left-large"><a href="http://www86.statcan.ca/w86_r000-fra.htm">Donn&eacute;es administratives (DDA)</a></li>
+            <li class="margin-left-large"><a href="http://www119.statcan.ca/ssdes_r000-fra.htm">Enqu&ecirc;tes sp&eacute;ciales (DES)</a></li>
+            <li class="margin-left-large"><a href="http://www85.statcan.ca/w85_r000-fra.htm">Gestion de l'information (DGI)</a></li>
+            <li class="margin-left-large"><a href="http://informatics/F_side/">Informatique (TI)</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-3">
+        <section>
+          <h4 class="wb-invisible">Intranets - Articles 15 &agrave; 26 de 26</h4>
+          <ul>
+            <li><a href="http://method/">M&eacute;thodologie (METH)</a></li>
+            <li><a href="http://www23.statcan.gc.ca/standards-normes/index-fra.html">Normes</a></li>
+            <li><a href="/37/37_000-fra.html">Ombudsman pour les entreprises</a></li>
+            <li><a href="http://www123.statcan.ca/w123_r000-fra.htm">Op&eacute;rations du recensement (DOR)</a></li>
+            <li><a href="http://oid-doi/">Opérations et de l’intégration (DOI)</a></li>
+            <li><a href="http://www117.statcan.ca/w117_r000-fra.htm">Planification et de la recherche en matière de collecte (DPRC)</a></li>
+            <li><a href="http://www116.statcan.ca/w116_r000-fra.htm">Prix à la consommation (DPC)</a></li>
+            <li><a href="http://www51.statcan.ca/w51_r000-fra.htm">Registres statistiques et de la géographie (DRSG)</a></li>
+            <li><a href="http://www94.statcan.gc.ca/w94_r000-fra.htm">Service de renseignements statistiques (SRS)</a></li>
+            <li><a href="http://www38.statcan.ca/w38_r000-fra.htm">Statistique des entreprises (DSE)</a></li>
+            <li><a href="http://www87.statcan.gc.ca/w87_r000-fra.htm">Statistique du revenu (DSR)</a></li>
+            <li><a href="http://www39.statcan.ca/w39_r000-fra.htm">Statistique sociale et autochtone (DSSEA)</a></li>
+            <li><a href="http://www122.statcan.ca">Tourisme et Centre de la statistique de l’éducation (DTCSE)</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="span-2 row-end border-left">
+        <section>
+          <h4 class="wb-invisible">Portails - Articles 1 &agrave; 13 de 13</h4>
+          <ul>
+            <li><a href="/04/04t/04t_000-fra.html">Bénévole à StatCan</a></li>
+            <li><a href="/38/38_000-fra.html"><abbr title="Campagne de charit&acute; en milieu de travail du Gouvernement du Canada">CCMTGC</abbr></a></li>
+            <li><a href="http://www96.statcan.ca/fpt/fpt_r000_f.htm">Coordonnateurs statistiques</a></li>
+            <li><a href="/33/33_000-fra.html">La voie de l&rsquo;innovation</a></li>
+            <li><a href="http://adminsystemsportal/DesktopDefault.aspx?lang=fr&tabid=7">Libre-service <abbr title="Ressources Humaine">RH</abbr></a>
+            <li><a href="/07/0704/0704_000-fra.html">Mieux-être au travail</a></li>
+            <li><a href="/07/07bb/07bb_000-fra.html">Pour les cadres</a></li>
+            <li><a href="/21/21_000-fra.html">Pour les gestionnaires</a></li>
+            <li><a href="http://srm/SRMHome.aspx" title="Gestion des demandes de service-Division des services de soutien int&eacute;gr&eacute;s">Portail <abbr title="Gestion des demandes de service">GDS</abbr></a></li>
+            <li><a href="http://rjps/">R&eacute;seau des jeunes professionnels de StatCan (RJPS)</a></li>
+            <li><a href="/12/12h/12h_000-fra.html">Santé et sécurité</a></li>
+           <li><a href="/43/43_000-fra.html">Secteur de la statistique économique</a></li>
+            <li><a href="/41/41_000-fra.html">Secteur des services intégrés</a></li>
+            <li><a href="http://adminsystemsportal/DesktopDefault.aspx?lang=fr">Systèmes administratifs</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>-->
+<!-- END button 7 -->
+
+<li>
+  <section>
+    <h3><a href="#">Coin du <abbr title="R&eacute;seau de communications internes">RCI</abbr>&nbsp;</a></h3>
+    <div class="mb-sm span-3">
+      <div class="span-3">
+        <section>
+          <h4 class="background-medium margin-bottom-none font-medium"><a href="/06/06_000-fra.html" class="nodeco">Visiter le coin du <abbr title="R&eacute;seau de communications internes">RCI</abbr></a></h4>
+        </section>
+      </div>
+      <div class="span-3">
+        <ul>
+          <!--<li><a href="/06/06_000-fra,html">Soumettre du contenu au RCI</a></li>-->
+          <li><a href="/13/13_001-fra.html">Gestionnaires de portails et d'intranets</a></li>
+          <li><a href="/03/03g/03g_000-fra.html">Retraites et d&eacute;parts</a></li>
+          <li><a href="/14/14_000-fra.html">Menu &ndash; Caf&eacute;t&eacute;ria de l’immeuble Principal</a></li>
+          <li><a href="/14/14_000a-fra.html">Menu &ndash; Caf&eacute;t&eacute;ria de l’immeuble Jean-Talon</a></li>
+          <li><a href="/r031-fra.html">Adresses et coordonnées pour Statistique Canada</a></li>
+          <li><a href="/35/35b/35b_013-fra.html">Demander des services de réparation ou d’entretien de l’immeuble</a></li>
+          <li><a href="/r014-fra.html">Idées, suggestions et commentaires</a></li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+</li>
+<!-- END button 8 -->
+<!--<li>
+  <h3><a href="http://icn-rci.statcan.ca/bbaspx/bbaspx_000-fra.aspx">Babillard</a></h3>
+</li>-->
+
+
+</ul>
+</div></div>
+<!-- incl. Mega Menu FIN -->
+
+</div></div>
+
+<div id="gcwu-bc"><h2>Fil d'Ariane</h2><div id="gcwu-bc-in">
+<ol>
+<li>Accueil</li>
+<!-- Breadcrumb trail -->
+<!-- InstanceBeginEditable name="bread" --> <!-- InstanceEndEditable -->
+</ol>
+</div></div>
+</nav>
+</header></div></div>
+
