@@ -1,0 +1,197 @@
+# ECN site search: no_proxy=* 
+- ecn_en:
+    name: ecn english exclude hr, hub
+    lang: en
+    output_file: /tmp/ecn_en.csv
+    start_links:
+      - https://icn-rci.statcan.ca/rcicn_r000-eng.htm
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - ^https://icn-rci.statcan.ca/.*-eng.htm
+    exclude_patterns:
+      - https://icn-rci.statcan.ca/.*-fra.htm
+      - https://icn-rci.statcan.ca/35/.*-eng.htm
+      - https://icn-rci.statcan.ca/07/.*-eng.htm
+
+- ecn_fr:
+    name: ecn french
+    lang: fr
+    output_file: /tmp/ecn_fr.csv
+    start_links:
+      - https://icn-rci.statcan.ca/rcicn_r000-fra.htm
+      - http://www40.statcan.ca/phone/
+      - http://www40.statcan.ca/phone/.*_f.htm
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - ^https://icn-rci.statcan.ca/.*-fra.htm
+    pattern2tag:
+      - https://icn-rci.statcan.ca/07/.*: hr
+      - https://icn-rci.statcan.ca/35/.*: hub
+      - http://www44.statcan.ca/.* : statcan
+      - http://www40.statcan.ca/phone/.* : phone
+    pattern2tag:
+      - https://icn-rci.statcan.ca/07/.*: hr
+      - https://icn-rci.statcan.ca/35/.*: hub
+    exclude_patterns:
+      - https://icn-rci.statcan.ca/.*-eng.htm
+
+- ecn_hub_en:
+    name: ecn hub english
+    lang: en
+    output_file: /tmp/ecn_hub_en.csv
+    start_links:
+      - https://icn-rci.statcan.ca/rcicn_r000-eng.htm
+    follow_link_not_index:
+      - https://icn-rci.statcan.ca/rcicn_r000-eng.htm
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - https://icn-rci.statcan.ca/35/.*-eng.htm
+- ecn_hub_fr:
+    name: hub fr
+
+- ecn_hr_en:
+    name: ecn hr english
+    lang: en
+    output_file: /tmp/ecn_hr_en.csv
+    start_links:
+      - https://icn-rci.statcan.ca/rcicn_r000-eng.htm
+    follow_link_not_index:
+      - https://icn-rci.statcan.ca/rcicn_r000-eng.htm
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - https://icn-rci.statcan.ca/07/.*-eng.htm
+
+- ecn_hr_fr:
+   name: hr fr
+
+- phone_en:
+    name: ecn phone english
+    lang: en
+    output_file: /tmp/ecn_phone_en.csv
+    start_links:
+      - http://www40.statcan.ca/phone/
+    depth: -1
+    include_patterns:
+      - http://www40.statcan.ca/phone/.*_e.htm
+    exclude_patterns:
+      - http://www40.statcan.ca/phone/.*_f.htm
+
+- phone_fr:
+    name: ecn phone french
+    lang: fr
+    output_file: /tmp/ecn_phone_fr.csv
+    start_links:
+      - http://www40.statcan.ca/phone/
+    depth: -1
+    include_patterns:
+      - http://www40.statcan.ca/phone/.*_f.htm
+    exclude_patterns:
+      - http://www40.statcan.ca/phone/.*_e.htm
+
+- statcan_en:
+    name: at statcan english
+    lang: en
+    output_file: /tmp/ecn_statcan_en.csv
+    start_links:
+      - http://www44.statcan.ca/cgi-bin/lateststatcan-eng.cgi
+    follow_link_not_index:
+      - http://www44.statcan.ca/cgi-bin/lateststatcan-eng.cgi
+      - http://www44.statcan.ca/r002-eng.html
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - http://www44.statcan.ca/.*-eng.html
+      - http://www44.statcan.ca/.*-eng.htm
+      - http://www44.statcan.ca/.*_e.htm
+      - http://www44.statcan.ca/old/Eng-stat/past-iss/.*\.html
+    exclude_patterns:
+      - http://www44.statcan.ca/.*-fra.html
+
+- statcan_fr:
+    name: at statcan french
+    lang: fr
+    output_file: /tmp/ecn_statcan_fr.csv
+    start_links:
+      - http://www44.statcan.ca/cgi-bin/lateststatcan-fra.cgi
+    follow_link_not_index:
+      - http://www44.statcan.ca/cgi-bin/lateststatcan-fra.cgi
+      - http://www44.statcan.ca/r002-fra.html
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - http://www44.statcan.ca/.*-fra.htm
+      - http://www44.statcan.ca/.*-fra.html
+      - http://www44.statcan.ca/.*_f.htm
+      - http://www44.statcan.ca/old/Fre-stat/past-iss/.*\.html
+    exclude_patterns:
+      - http://www44.statcan.ca/.*-eng.htm
+
+- daily_en:
+    name: daily english
+    lang: en
+    output_file: /tmp/ecn_daily_en.csv
+    start_links:
+      - http://www.statcan.gc.ca/cgi-bin/DAILY/dot-eng.pl
+    tag: daily
+    depth: 1
+    follow_link_not_index:
+      - 'http://www\.statcan\.gc\.gc/(?:daily-quotidien/.*/tdq|cgi-bin/).*'
+    incl:
+      - http://www\.statcan\.gc\.ca/daily-quotidien/dotdaily-eng\.htm
+      - http://www\.statcan\.gc\.ca/cgi-bin/DAILY/.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*
+    excl:
+      - .*/rd.*\.htm
+      - .*copy.*
+      - .*-fra\.htm
+      - .*xd.*\.htm
+      - .*zd.*\.htm
+      - .*zq.*\.htm
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/ah.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/be.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/cg.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/f.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/pn.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/rd.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*/s.*\.htm.*
+      - http://www\.statcan\.gc\.ca/daily-quotidien/today/.*
+      - .*files_to_update.*
+      - .*driver_daily_update.*
+  
+- daily_fr:
+    name: daily french
+    lang: fr
+    output_file: /tmp/ecn_daily_fr.csv
+    start_links:
+      - http://www.statcan.gc.ca/cgi-bin/DAILY/dot-fra.pl
+    tag: daily
+    depth: 1
+    
+
+- daily_archive_en:
+    name: daily archives english
+    lang: en
+    output_file: /tmp/daily_ar_en.csv
+    start_links:
+      - http://www.statcan.gc.ca/daily-quotidien/dotdaily-eng.htm
+    depth: 1
+    include_patterns:
+      - http://www\.statcan\.gc\.ca/daily-quotidien/dotdaily-eng\.htm  
+      - http://www\.statcan\.gc\.ca/daily-quotidien/.*
+    default_last_modified: 1997-01-01T00:00:01.000Z

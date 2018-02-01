@@ -116,7 +116,7 @@ def ib_search():
         if res:
             res = json.loads(res)['response']
             total, per_page = res['record_count'], 20
-            href=''.join(['/en/search?q=',qval,
+            href=''.join(['/en/ib_search?q=',qval,
                            '&num=20&page={0}'])
             if total > per_page:
                 pagination = Pagination(page=page, per_page=per_page,
@@ -137,7 +137,7 @@ def ecn_search():
         if res:
             res = json.loads(res)['response']
             total, per_page = res['record_count'], 20
-            href=''.join(['/en/search?q=',qval,
+            href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qval,
                            '&num=20&page={0}'])
             if total > per_page:
                 pagination = Pagination(page=page, per_page=per_page,
