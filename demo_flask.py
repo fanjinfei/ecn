@@ -75,13 +75,23 @@ def _get_search(q, start_page=1, page_size=20, label=None, burl=None):
 def suggest():
     qval = request.args.get('query')
     callback = request.args.get('callback')
-    url = end_point+'/suggest?callback={1}&query={0}&fields=_default,content,title&num=20'.format(qval, callback)
+    words = qval.split(' ')
+    prefix = ' '.join(words[:-1])
+    if not words[-1]:
+        return '/**/'+callback+ '({"response": {"status": 0, "version": 11.4, "result": {"hits": [], "total": "0", "num": "0", "took": "0"}}})'
+    url = end_point+'/suggest?callback={1}&query={0}&fields=_default,content,title&num=20'.format(words[-1], callback)
     r = requests.get(url=url, timeout=2)
     if r.status_code == requests.codes.ok:
-        return r.text
-        r= json.loads(r.text[11:-1])['response']['result']['hits']
-        r = [p['text'] for p in r]
-        return json.dumps(r)
+        #return r.text
+        startp = len(callback) +5
+        rjhits= json.loads(r.text[startp:-1])
+        res = rjhits['response']['result']['hits']
+        for p in res:
+            p['text'] = prefix + ' ' + p['text']
+        rjhits['response']['result']['hits'] = res
+        rtext = r.text[:startp] + json.dumps(rjhits) + ')'
+        print rtext
+        return rtext
 
 @app.route("/<lang_code>/search", methods=['GET'])
 def search():
@@ -133,12 +143,16 @@ def ecn_search():
     res = None
     pagination = None
     if qval:
-        res = _get_search(qval, page, 20, 'ecn', 'http://f7wcmstestb2.statcan.ca:9601/json/?')
+        #TODO: escape : -> \:
+        res = _get_search(qval.replace(' ', '+'), page, 20, 'ecn', 'http://f7wcmstestb2.statcan.ca:9601/json/?')
         if res:
             res = json.loads(res)['response']
-            total, per_page = res['record_count'], 20
+            total, per_page = res.get('record_count', 0), 20
             href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qval,
                            '&num=20&page={0}'])
+            for item in res.get('result', []):
+                if item['content_description'].find('<strong>') == -1:
+                    item['content_description'] = item['content_description'][:400]
             if total > per_page:
                 pagination = Pagination(page=page, per_page=per_page,
                                     href = href, bs_version=4,

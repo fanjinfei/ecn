@@ -83,6 +83,9 @@
     start_links:
       - http://www40.statcan.ca/phone/
     depth: -1
+    try_last_modified: False
+    follow_link_not_index:
+      - http://www40.statcan.ca/phone/$
     include_patterns:
       - http://www40.statcan.ca/phone/.*_e.htm
     exclude_patterns:
