@@ -11,12 +11,17 @@
   </div>
   <div id="navbox">
     &nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn {{ 'disabled' if sub=='' else 'btn-info' }}" href="{{ urls['all'] }}" >all</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn btn-info" href="{{ urls['hub'] }}"> HUB </a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn btn-info" href="//www.statcan.gc.ca/eng/help/site"> Human Resource </a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn btn-info" href="//www.statcan.gc.ca/eng/help/site"> @Statcan </a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn {{ 'disabled' if sub=='phone' else 'btn-info' }}" href="{{ urls['phone'] }}"> Phone </a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn btn-info" href="//www.statcan.gc.ca/eng/help/site"> Daily </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='' else 'btn-info' }}" href="{{ urls['all'] }}" 
+        data-toggle="tooltip" title="All ECN" >all</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='hub' else 'btn-info' }}" href="{{ urls['hub'] }}"> HUB </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='hr' else 'btn-info' }}" href="{{ urls['hr'] }}"
+       data-toggle="tooltip" title="Human Resource"> Human Resource </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='statcan' else 'btn-info' }}" href="{{ urls['statcan'] }}"
+       data-toggle="tooltip" title="STATCAN"> @Statcan </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='phone' else 'btn-info' }}" href="{{ urls['phone'] }}"
+       data-toggle="tooltip" title="Phone"> Phone </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='daily' else 'btn-info' }}" href="{{ urls['daily'] }}"
+       data-toggle="tooltip" title="Daily"> Daily </a>&nbsp;&nbsp;|&nbsp;&nbsp;
   </div>
 </form>
 
