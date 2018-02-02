@@ -57,12 +57,15 @@ def images_page(page_name):
     print 'images', page_name
     return _send_static( 'images/wb-icon/'+page_name)
 
-def _get_search(q, start_page=1, page_size=20, label=None, burl=None):
+def _get_search(q, start_page=1, page_size=20, labels=None, burl=None):
     start = (start_page-1)*page_size
     if not burl: burl=base_url
-    if label:
-        q = q + '+label%3A' +label
-    url = ''.join([burl, 'q=', q, '&start={0}&num={1}'.format(start,page_size)])
+    fields = ''
+    if labels:
+        #q = q + '+label%3A' +label
+        for label in labels:
+            fields += '&fields.label={0}'.format(label)
+    url = ''.join([burl, 'q=', q, '&start={0}&num={1}'.format(start,page_size)]) + fields
     print (url)
     user_agent = {'User-agent': 'statcan search'}
     r = requests.get(url=url, headers=user_agent, timeout=10)
@@ -142,13 +145,23 @@ def ecn_search():
     print (qval, request.get_json(), request.data, request.args)
     res = None
     pagination = None
+    
+    sub = request.args.get('sub', '')
+    if not sub:
+        labels = ['ecn', 'phone']
+    else:
+        labels = [sub]
+    urls = {}
+    urls['all'] = '/{0}/ecn_search?q={1}'.format(get_locale(),qval)
+    urls['phone'] = urls['all']+ '&sub=phone'
+    urls['statcan'] = urls['all']+ '&sub=statcan'
     if qval:
         #TODO: escape : -> \:
-        res = _get_search(qval.replace(' ', '+'), page, 20, 'ecn', 'http://f7wcmstestb2.statcan.ca:9601/json/?')
+        res = _get_search(qval.replace(' ', '+'), page, 20, labels, 'http://f7wcmstestb2.statcan.ca:9601/json/?')
         if res:
             res = json.loads(res)['response']
             total, per_page = res.get('record_count', 0), 20
-            href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qval,
+            href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qval, '&sub={0}'.format(sub),
                            '&num=20&page={0}'])
             for item in res.get('result', []):
                 if item['content_description'].find('<strong>') == -1:
@@ -157,7 +170,7 @@ def ecn_search():
                 pagination = Pagination(page=page, per_page=per_page,
                                     href = href, bs_version=4,
                                     total=total, record_name='users')
-    return render_template('index_ecn.html', qval=qval or '', res=res, locale=get_locale(),
+    return render_template('index_ecn.html', qval=qval or '', sub=sub, urls=urls, res=res, locale=get_locale(),
                            pagination=pagination)
 
 

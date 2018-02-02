@@ -5,8 +5,18 @@
 <form action="{{ url_for('ecn_search', lang_code=locale) }}" id="searchForm" method='get'>
   <div id="gcwu-srchbx-in" class="input-group col-md-8">
     <p> {{ _('search') }}
+    <input name='sub' value="{{ sub }}" type="hidden">
     <input name='q' size=30 id="query" value="{{qval}}" 
            placeholder="{{ _('search') }}"  autocomplete="off">
+  </div>
+  <div id="navbox">
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='' else 'btn-info' }}" href="{{ urls['all'] }}" >all</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn btn-info" href="{{ urls['hub'] }}"> HUB </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn btn-info" href="//www.statcan.gc.ca/eng/help/site"> Human Resource </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn btn-info" href="//www.statcan.gc.ca/eng/help/site"> @Statcan </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='phone' else 'btn-info' }}" href="{{ urls['phone'] }}"> Phone </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn btn-info" href="//www.statcan.gc.ca/eng/help/site"> Daily </a>&nbsp;&nbsp;|&nbsp;&nbsp;
   </div>
 </form>
 
