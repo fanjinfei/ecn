@@ -5,23 +5,23 @@
 <form action="{{ url_for('ecn_search', lang_code=locale) }}" id="searchForm" method='get'>
   <div id="gcwu-srchbx-in" class="input-group col-md-8">
     <p> {{ _('search') }}
-    <input name='sub' value="{{ sub }}" type="hidden">
+    <input name='sub' id="subDomain" value="{{ sub }}" type="hidden">
     <input name='q' size=30 id="query" value="{{qval}}" 
            placeholder="{{ _('search') }}"  autocomplete="off">
   </div>
   <div id="navbox">
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='' else 'btn-info' }}" href="{{ urls['all'] }}" 
-        data-toggle="tooltip" title="All ECN" >all</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn {{ 'disabled' if sub=='hub' else 'btn-info' }}" href="{{ urls['hub'] }}"> HUB </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        data-toggle="tooltip" title="All ECN" >All</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='hub' else 'btn-info' }}" href="{{ urls['hub'] }}"> The Hub </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='hr' else 'btn-info' }}" href="{{ urls['hr'] }}"
-       data-toggle="tooltip" title="Human Resource"> Human Resource </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="Human Resource"> Human Resources </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='statcan' else 'btn-info' }}" href="{{ urls['statcan'] }}"
-       data-toggle="tooltip" title="STATCAN"> @Statcan </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="STATCAN"> @StatCan </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='phone' else 'btn-info' }}" href="{{ urls['phone'] }}"
-       data-toggle="tooltip" title="Phone"> Phone </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="Phone"> Telephone </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='daily' else 'btn-info' }}" href="{{ urls['daily'] }}"
-       data-toggle="tooltip" title="Daily"> Daily </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="Daily"> The Daily </a>&nbsp;&nbsp;|&nbsp;&nbsp;
   </div>
 </form>
 

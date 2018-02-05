@@ -77,18 +77,24 @@ def _get_search(q, start_page=1, page_size=20, labels=None, burl=None, lang='en'
 @app.route("/suggest", methods=['GET'])
 def suggest():
     qval = request.args.get('query')
+    sub = request.args.get('sub')
     callback = request.args.get('callback')
     words = qval.split(' ')
     prefix = ' '.join(words[:-1])
     if not words[-1]:
         return '/**/'+callback+ '({"response": {"status": 0, "version": 11.4, "result": {"hits": [], "total": "0", "num": "0", "took": "0"}}})'
-    url = end_point+'/suggest?callback={1}&query={0}&fields=_default,content,title&num=20'.format(words[-1], callback)
+    url = end_point+u'/suggest?callback={1}&query={0}&fields=_default,content,title&num=20'.format(words[-1], callback)
+    if sub:
+        if sub =='daily':
+            sub='daily_archive,daily'
+        url += '&tags={0}'.format(sub)
     r = requests.get(url=url, timeout=2)
+    print "TO FESS suggest",sub, url
     if r.status_code == requests.codes.ok:
         #return r.text
         startp = len(callback) +5
         rjhits= json.loads(r.text[startp:-1])
-        res = rjhits['response']['result']['hits']
+        res = rjhits['response']['result'].get('hits', [])
         for p in res:
             p['text'] = prefix + ' ' + p['text']
         rjhits['response']['result']['hits'] = res
@@ -137,10 +143,19 @@ def ib_search():
                                     total=total, record_name='users')
     return render_template('index_ib.html', qval=qval or '', res=res, locale=get_locale(),
                            pagination=pagination)
+def qfilter(val):
+    r = []
+    for c in val:
+        if c.isalnum() or c in ['-', '\'', '"', '+']:
+            r.append(c)
+        else:
+            r.append(' ')
+    return u''.join(r) 
 
 @app.route("/<lang_code>/ecn_search", methods=['GET'])
 def ecn_search():
     qval = request.args.get('q')
+    print type(qval), qval
     page = request.args.get('page', 1, type=int)
     print (qval, request.get_json(), request.data, request.args)
     res = None
@@ -154,7 +169,7 @@ def ecn_search():
     else:
         labels = [sub]
     urls = {}
-    urls['all'] = '/{0}/ecn_search?q={1}'.format(get_locale(),qval)
+    urls['all'] = u'/{0}/ecn_search?q={1}'.format(get_locale(),qval or '')
     urls['hub'] = urls['all']+ '&sub=hub'
     urls['hr'] = urls['all']+ '&sub=hr'
     urls['daily'] = urls['all']+ '&sub=daily'
@@ -168,14 +183,14 @@ def ecn_search():
         if res:
             res = json.loads(res)['response']
             total, per_page = res.get('record_count', 0), 20
-            href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qval, '&sub={0}'.format(sub),
+            href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qfilter(qval), '&sub={0}'.format(sub),
                            '&num=20&page={0}'])
             for item in res.get('result', []):
                 if item['content_description'].find('<strong>') == -1:
                     item['content_description'] = item['content_description'][:400]
             if total > per_page:
                 pagination = Pagination(page=page, per_page=per_page,
-                                    href = href, bs_version=4,
+                                    href = href.encode('utf-8'), bs_version=4,
                                     total=total, record_name='users')
     return render_template('index_ecn.html', qval=qval or '', sub=sub, urls=urls, res=res, locale=get_locale(),
                            pagination=pagination)

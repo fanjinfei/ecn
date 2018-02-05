@@ -40,7 +40,7 @@
 		src="/static/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap.js"></script>
 <script type="text/javascript" src="/static/bootstrap-multiselect.js"></script>
-<script type="text/javascript" src="/static/suggestor.js"></script>
+<script type="text/javascript" src="/static/suggestor2.js"></script>
 <script type="text/javascript">
 $(function () {
     var b = 'http://dev-b-es-fusion01.stc.ca:8080';
@@ -50,6 +50,7 @@ $(function () {
             url: b + "/suggest",
             fn: "_default,content,title",
             num: 10,
+            sub: $("#subDomain").val()
             // lang: $("#langSearchOption").val()
         },
         boxCssInfo: {
