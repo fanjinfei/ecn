@@ -4,6 +4,7 @@ from flask import render_template, redirect, g, url_for, abort
 from flask import send_from_directory
 from flask.ext.babel import Babel
 from flask_paginate import Pagination, get_page_parameter
+import urllib
 import requests
 import json
 import sys
@@ -57,7 +58,7 @@ def images_page(page_name):
     print 'images', page_name
     return _send_static( 'images/wb-icon/'+page_name)
 
-def _get_search(q, start_page=1, page_size=20, labels=None, burl=None, lang='en'):
+def _get_search(q, start_page=1, page_size=20, labels=None, burl=None, lang='en', sort=''):
     start = (start_page-1)*page_size
     if not burl: burl=base_url
     fields = ''
@@ -65,7 +66,7 @@ def _get_search(q, start_page=1, page_size=20, labels=None, burl=None, lang='en'
         #q = q + '+label%3A' +label
         for label in labels:
             fields += '&fields.label={0}'.format(label)
-    url = ''.join([burl, 'q=', q, '&start={0}&num={1}&lang={2}'.format(start,page_size, lang)]) + fields
+    url = ''.join([burl, 'q=', q, '&start={0}&num={1}&lang={2}&sort={3}'.format(start,page_size, lang, sort)]) + fields
     print (url)
     user_agent = {'User-agent': 'statcan search'}
     r = requests.get(url=url, headers=user_agent, timeout=10)
@@ -146,7 +147,7 @@ def ib_search():
 def qfilter(val):
     r = []
     for c in val:
-        if c.isalnum() or c in ['-', '\'', '"', '+']:
+        if c.isalnum() or c in ['-', '\'', '"', '+', '*']:
             r.append(c)
         else:
             r.append(' ')
@@ -155,6 +156,7 @@ def qfilter(val):
 @app.route("/<lang_code>/ecn_search", methods=['GET'])
 def ecn_search():
     qval = request.args.get('q')
+    sort = request.args.get('sort', '')
     print type(qval), qval
     page = request.args.get('page', 1, type=int)
     print (qval, request.get_json(), request.data, request.args)
@@ -162,38 +164,45 @@ def ecn_search():
     pagination = None
     
     sub = request.args.get('sub', '')
-    if not sub:
-        labels = ['ecn', 'phone', 'daily_archive', 'statcan']
+    if not sub or sub=='all':
+        labels = ['ecn', 'human_resource', 'hub']
     elif sub =='daily':
-        labels = ['daily_archive']
+        labels = ['daily_archive', 'daily', 'daily_latest']
+    elif sub =='hr':
+        labels = ['human_resource']
     else:
         labels = [sub]
     urls = {}
-    urls['all'] = u'/{0}/ecn_search?q={1}'.format(get_locale(),qval or '')
-    urls['hub'] = urls['all']+ '&sub=hub'
-    urls['hr'] = urls['all']+ '&sub=hr'
-    urls['daily'] = urls['all']+ '&sub=daily'
-    urls['phone'] = urls['all']+ '&sub=phone'
-    urls['statcan'] = urls['all']+ '&sub=statcan'
+    url_sbase = u'/{0}/ecn_search?q={1}&sort={2}'.format(get_locale(),qval or '', sort)
+    urls['all'] = url_sbase + '&sub=all'
+    urls['hub'] = url_sbase + '&sub=hub'
+    urls['hr'] = url_sbase + '&sub=hr'
+    urls['daily'] = url_sbase + '&sub=daily'
+    urls['phone'] = url_sbase + '&sub=phone'
+    urls['statcan'] = url_sbase + '&sub=statcan'
     lang = get_locale()
     if qval:
         #TODO: escape : -> \:
-        res = _get_search(qval.replace(' ', '+'), page, 20, labels,
-                          'http://f7wcmstestb2.statcan.ca:9601/json/?', lang)
+#        res = _get_search(qval.replace(' ', '+'), page, 20, labels,
+#                          'http://f7wcmstestb2.statcan.ca:9601/json/?', lang)
+        res = _get_search(qfilter(qval), page, 20, labels,
+                          'http://f7wcmstestb2.statcan.ca:9601/json/?', lang, sort)
         if res:
             res = json.loads(res)['response']
             total, per_page = res.get('record_count', 0), 20
-            href=''.join(['/{0}/ecn_search?q='.format(get_locale()),qfilter(qval), '&sub={0}'.format(sub),
+            href=''.join(['/{0}/ecn_search?q='.format(get_locale()), urllib.quote(qval.encode('utf-8')),
+                           '&sub={0}&sort={1}'.format(sub, sort),
                            '&num=20&page={0}'])
+            print 'phref:', href
             for item in res.get('result', []):
                 if item['content_description'].find('<strong>') == -1:
                     item['content_description'] = item['content_description'][:400]
             if total > per_page:
                 pagination = Pagination(page=page, per_page=per_page,
-                                    href = href.encode('utf-8'), bs_version=4,
+                                    href = href, bs_version=4,
                                     total=total, record_name='users')
     return render_template('index_ecn.html', qval=qval or '', sub=sub, urls=urls, res=res, locale=get_locale(),
-                           pagination=pagination)
+                           pagination=pagination, sort=sort)
 
 
 @app.route("/<lang_code>/adv_search", methods=['GET'])
