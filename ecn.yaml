@@ -22,24 +22,16 @@
     output_file: /tmp/ecn_fr.csv
     start_links:
       - https://icn-rci.statcan.ca/rcicn_r000-fra.htm
-      - http://www40.statcan.ca/phone/
-      - http://www40.statcan.ca/phone/.*_f.htm
     depth: -1
     exclude_html_sections:
       - header
       - footer
     include_patterns:
       - ^https://icn-rci.statcan.ca/.*-fra.htm
-    pattern2tag:
-      - https://icn-rci.statcan.ca/07/.*: hr
-      - https://icn-rci.statcan.ca/35/.*: hub
-      - http://www44.statcan.ca/.* : statcan
-      - http://www40.statcan.ca/phone/.* : phone
-    pattern2tag:
-      - https://icn-rci.statcan.ca/07/.*: hr
-      - https://icn-rci.statcan.ca/35/.*: hub
     exclude_patterns:
       - https://icn-rci.statcan.ca/.*-eng.htm
+      - https://icn-rci.statcan.ca/35/.*-fra.htm
+      - https://icn-rci.statcan.ca/07/.*-fra.htm
 
 - ecn_hub_en:
     name: ecn hub english
@@ -55,8 +47,21 @@
       - footer
     include_patterns:
       - https://icn-rci.statcan.ca/35/.*-eng.htm
+
 - ecn_hub_fr:
-    name: hub fr
+    name: ecn hub french
+    lang: fr
+    output_file: /tmp/ecn_hub_fr.csv
+    start_links:
+      - https://icn-rci.statcan.ca/rcicn_r000-fra.htm
+    follow_link_not_index:
+      - https://icn-rci.statcan.ca/rcicn_r000-fra.htm
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - https://icn-rci.statcan.ca/35/.*-fra.htm
 
 - ecn_hr_en:
     name: ecn hr english
@@ -74,7 +79,19 @@
       - https://icn-rci.statcan.ca/07/.*-eng.htm
 
 - ecn_hr_fr:
-   name: hr fr
+    name: ecn hr french
+    lang: fr
+    output_file: /tmp/ecn_hr_fr.csv
+    start_links:
+      - https://icn-rci.statcan.ca/rcicn_r000-fra.htm
+    follow_link_not_index:
+      - https://icn-rci.statcan.ca/rcicn_r000-fra.htm
+    depth: -1
+    exclude_html_sections:
+      - header
+      - footer
+    include_patterns:
+      - https://icn-rci.statcan.ca/07/.*-fra.htm
 
 - phone_en:
     name: ecn phone english
@@ -98,6 +115,9 @@
     start_links:
       - http://www40.statcan.ca/phone/
     depth: -1
+    try_last_modified: False
+    follow_link_not_index:
+      - http://www40.statcan.ca/phone/$
     include_patterns:
       - http://www40.statcan.ca/phone/.*_f.htm
     exclude_patterns:
@@ -151,10 +171,12 @@
     output_file: /tmp/ecn_daily_en.csv
     start_links:
       - http://www.statcan.gc.ca/cgi-bin/DAILY/dot-eng.pl
+      - http://www120.statcan.gc.ca/dotpages/utsdailye-dot-eng.html
     tag: daily
     depth: 1
     follow_link_not_index:
       - 'http://www\.statcan\.gc\.gc/(?:daily-quotidien/.*/tdq|cgi-bin/).*'
+      - http://www120.statcan.gc.ca/dotpages/utsdailye-dot-eng.html
     incl:
       - http://www\.statcan\.gc\.ca/daily-quotidien/dotdaily-eng\.htm
       - http://www\.statcan\.gc\.ca/cgi-bin/DAILY/.*
@@ -185,7 +207,17 @@
       - http://www.statcan.gc.ca/cgi-bin/DAILY/dot-fra.pl
     tag: daily
     depth: 1
-    
+
+#old style, part of latest are dups of daily, and they should be excluded from daily
+#new style, with micro web service, daily can generate correct label?
+- daily_latest_en:
+    name: daily latest english
+    lang: en
+    enabled: False
+    output_file: /tmp/ecn_daily_latest_en.csv
+    start_links:
+      - http://f7webappsb1.statcan.gc.ca/searchdaily/searchdaily?create_dot_file_please=1&lang=eng
+    depth: 1
 
 - daily_archive_en:
     name: daily archives english
@@ -198,3 +230,79 @@
       - http://www\.statcan\.gc\.ca/daily-quotidien/dotdaily-eng\.htm  
       - http://www\.statcan\.gc\.ca/daily-quotidien/.*
     default_last_modified: 1997-01-01T00:00:01.000Z
+
+#use ndm site map to decide, link filter is customized
+#http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
+# will not re-crawl archived urls: input_file
+# dq130920a-eng.htm has two 'lastmod' in sitemap
+- ndm_daily_archive_en:
+    name: ndm daily archive english
+    lang: en
+    archive_file: /tmp/ndm_daily_archive_en-crawled.csv
+    output_file: /tmp/ndm_daily_archive_en.csv
+    depth: 0
+    start_links:
+      - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-eng.xml
+    include_patterns:
+      - .*
+    try_last_modified: False
+    link_filter_function: daily_archive_filter
+- ndm_daily_en:
+    name: ndm daily english
+    lang: en
+    output_file: /tmp/ndm_daily_en.csv
+    depth: 0
+    start_links:
+      - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-eng.xml
+    include_patterns:
+      - .*
+    try_last_modified: False
+    link_filter_function: daily_filter
+- ndm_daily_latest_en:
+    name: ndm daily latest english
+    lang: en
+    output_file: /tmp/ndm_daily_latest_en.csv
+    depth: 0
+    start_links:
+      - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-eng.xml
+    include_patterns:
+      - .*
+    try_last_modified: False
+    link_filter_function: daily_latest_filter
+
+- ndm_daily_archive_fr:
+    name: ndm daily archive french
+    lang: fr
+    archive_file: /tmp/ndm_daily_archive_fr-crawled.csv
+    output_file: /tmp/ndm_daily_archive_fr.csv
+    depth: 0
+    start_links:
+      - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
+    include_patterns:
+      - .*
+    try_last_modified: False
+    link_filter_function: daily_archive_filter
+- ndm_daily_fr:
+    name: ndm daily french
+    lang: fr
+    output_file: /tmp/ndm_daily_fr.csv
+    depth: 0
+    start_links:
+      - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
+    include_patterns:
+      - .*
+    try_last_modified: False
+    link_filter_function: daily_filter
+- ndm_daily_latest_fr:
+    name: ndm daily latest french
+    lang: fr
+    output_file: /tmp/ndm_daily_latest_fr.csv
+    depth: 0
+    start_links:
+      - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
+    include_patterns:
+      - .*
+    try_last_modified: False
+    link_filter_function: daily_latest_filter
+
+
