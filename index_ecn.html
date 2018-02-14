@@ -12,16 +12,16 @@
   <div id="navbox">
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='' or sub=='all' else 'btn-info' }}" href="{{ urls['all'] }}" 
-        data-toggle="tooltip" title="All ECN" >All ECN</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-    <a class="btn {{ 'disabled' if sub=='hub' else 'btn-info' }}" href="{{ urls['hub'] }}"> The Hub </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        data-toggle="tooltip" title="All ECN" >{{ _('All ECN') }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <a class="btn {{ 'disabled' if sub=='hub' else 'btn-info' }}" href="{{ urls['hub'] }}">{{ _('The Hub') }} </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='hr' else 'btn-info' }}" href="{{ urls['hr'] }}"
-       data-toggle="tooltip" title="Human Resource"> Human Resources </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="Human Resource">{{ _('Human Resources') }} </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='statcan' else 'btn-info' }}" href="{{ urls['statcan'] }}"
        data-toggle="tooltip" title="STATCAN"> @StatCan </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='phone' else 'btn-info' }}" href="{{ urls['phone'] }}"
-       data-toggle="tooltip" title="Phone"> Telephone </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="Phone">{{ _('Telephone') }} </a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="btn {{ 'disabled' if sub=='daily' else 'btn-info' }}" href="{{ urls['daily'] }}"
-       data-toggle="tooltip" title="Daily"> The Daily </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+       data-toggle="tooltip" title="Daily"> {{ _('The Daily') }} </a>&nbsp;&nbsp;|&nbsp;&nbsp;
   </div>
   {% include 'sort_by.html' %}
 </form>
@@ -33,7 +33,10 @@
 {% if res %}
   <div class="row">
     <div class="col-md-2">
-      Total: {{ res.record_count }} 
+      Total: {{ res.record_count }} <br>
+      {% if res.record_count > 10000 %}
+         {{ 'Only first 10,000 records will be displayed.' }}
+      {% endif %}
     </div> 
     <div class="col-md-6"> {{ pagination.links }}</div>
   </div>

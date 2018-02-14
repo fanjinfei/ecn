@@ -1,2 +1,26 @@
 msgid "search"
 msgstr "chercher"
+
+msgid "All ECN"
+msgstr "Le RCE"
+
+msgid "The Hub"
+msgstr "Le Carrefour"
+
+msgid "Human Resources"
+msgstr "Ress. humaines"
+
+msgid "Telephone"
+msgstr "Répertoire téléphonique"
+
+msgid "The Daily"
+msgstr "Le Quotidien"
+
+msgid "Order by"
+msgstr "Trier par"
+
+msgid "Relevance"
+msgstr "Pertinence"
+
+msgid "Last Modified"
+msgstr "Date de Modification"

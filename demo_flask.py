@@ -170,8 +170,11 @@ def ecn_search():
         labels = ['daily_archive', 'daily', 'daily_latest']
     elif sub =='hr':
         labels = ['human_resource']
-    else:
+    elif sub in ['statcan', 'phone', 'hub']:
         labels = [sub]
+    else:
+        sub=''
+        labels = ['ecn', 'human_resource', 'hub']
     urls = {}
     url_sbase = u'/{0}/ecn_search?q={1}&sort={2}'.format(get_locale(),qval or '', sort)
     urls['all'] = url_sbase + '&sub=all'
@@ -190,6 +193,8 @@ def ecn_search():
         if res:
             res = json.loads(res)['response']
             total, per_page = res.get('record_count', 0), 20
+            total = min(total, 10000) # elastic search index.max_result_window [default] = 10000
+            print 'total', total
             href=''.join(['/{0}/ecn_search?q='.format(get_locale()), urllib.quote(qval.encode('utf-8')),
                            '&sub={0}&sort={1}'.format(sub, sort),
                            '&num=20&page={0}'])

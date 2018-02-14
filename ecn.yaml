@@ -245,6 +245,9 @@
       - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-eng.xml
     include_patterns:
       - .*
+    exclude_html_sections:
+      - header
+      - footer
     try_last_modified: False
     link_filter_function: daily_archive_filter
 - ndm_daily_en:
@@ -256,6 +259,9 @@
       - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-eng.xml
     include_patterns:
       - .*
+    exclude_html_sections:
+      - header
+      - footer
     try_last_modified: False
     link_filter_function: daily_filter
 - ndm_daily_latest_en:
@@ -267,6 +273,9 @@
       - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-eng.xml
     include_patterns:
       - .*
+    exclude_html_sections:
+      - header
+      - footer
     try_last_modified: False
     link_filter_function: daily_latest_filter
 
@@ -280,6 +289,9 @@
       - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
     include_patterns:
       - .*
+    exclude_html_sections:
+      - header
+      - footer
     try_last_modified: False
     link_filter_function: daily_archive_filter
 - ndm_daily_fr:
@@ -291,6 +303,9 @@
       - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
     include_patterns:
       - .*
+    exclude_html_sections:
+      - header
+      - footer
     try_last_modified: False
     link_filter_function: daily_filter
 - ndm_daily_latest_fr:
@@ -302,6 +317,9 @@
       - http://www.statcan.gc.ca/dai-quo/ssi/homepage/sitemap-daily-fra.xml
     include_patterns:
       - .*
+    exclude_html_sections:
+      - header
+      - footer
     try_last_modified: False
     link_filter_function: daily_latest_filter
 
