@@ -27,7 +27,9 @@
       {% for key, value, vurl, checked in facet %}
         {% if ex_q %}
            {% if checked==1 %}
-             <a href="{{vurl}}"> {{key}}: {{value}}  X </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+             <a href="{{vurl}}" class="btn btn-info btn-xs mrgn-lft-sm mrgn-bttm-sm" title="Remove">
+              {{key}}: {{value}}
+             <span class="glyphicon glyphicon-remove">X</span>    </a> &nbsp;&nbsp;|&nbsp;&nbsp;
            {% else %}
              <a href="{{vurl}}"> {{key}}  </a> &nbsp;&nbsp;|&nbsp;&nbsp;
            {% endif %}

@@ -13,8 +13,8 @@ import pprint
 
 templates_dir = sys.argv[1]
 static_dir = sys.argv[2]
-end_point = 'http://f7wcmstestb2.statcan.ca:9601'
-base_url = 'http://dev-b-es-fusion01.stc.ca:8080/json/?'
+end_point = sys.argv[3] #'http://xxx.ca:9601'
+base_url = 'http://xxx.ca:8080/json/?'
 app = Flask(__name__, template_folder=templates_dir)
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = './i18n'
 babel = Babel(app)
@@ -76,7 +76,7 @@ def _get_search(q, start_page=1, page_size=20, labels=None, burl=None, lang='en'
         return None
 
 date_range = {
-    "timestamp:[now-1d/d TO *]":[0,'past day'], 
+    "timestamp:[now-1d/d TO *]":[0,'past 24 hours'], 
     "timestamp:[now-7d/d TO *]":[1,'past week'],
     "timestamp:[now-30d/d TO *]":[2, 'past month'],
     "timestamp:[now-1y/d TO *]":[3, 'past year'],
@@ -121,6 +121,10 @@ def suggest():
     if sub:
         if sub =='daily':
             sub='daily_archive,daily'
+        elif sub == 'all' or not sub:
+            sub='ecn,human_resource,hub'
+        elif sub =='hr':
+            sub = 'human_resource'
         url += '&tags={0}'.format(sub)
     r = requests.get(url=url, timeout=2)
     print "TO FESS suggest",sub, url
@@ -157,26 +161,6 @@ def search():
     return render_template('index.html', qval=qval or '', res=res, locale=get_locale(),
                            pagination=pagination)
 
-@app.route("/<lang_code>/ib_search", methods=['GET'])
-def ib_search():
-    qval = request.args.get('q')
-    page = request.args.get('page', 1, type=int)
-    print (qval, request.get_json(), request.data, request.args)
-    res = None
-    pagination = None
-    if qval:
-        res = _get_search(qval, page, 20, 'ib', 'http://f7wcmstestb2.statcan.ca:9601/json/?')
-        if res:
-            res = json.loads(res)['response']
-            total, per_page = res['record_count'], 20
-            href=''.join(['/en/ib_search?q=',qval,
-                           '&num=20&page={0}'])
-            if total > per_page:
-                pagination = Pagination(page=page, per_page=per_page,
-                                    href = href, bs_version=4,
-                                    total=total, record_name='users')
-    return render_template('index_ib.html', qval=qval or '', res=res, locale=get_locale(),
-                           pagination=pagination)
 def qfilter(val):
     r = []
     for c in val:
@@ -238,10 +222,8 @@ def ecn_search():
         return ndata
     if qval:
         #TODO: escape : -> \:
-#        res = _get_search(qval.replace(' ', '+'), page, 20, labels,
-#                          'http://f7wcmstestb2.statcan.ca:9601/json/?', lang)
         res = _get_search_post(qfilter(qval), page, 20, labels,
-                          'http://f7wcmstestb2.statcan.ca:9601/json/?', lang, sort, ex_q)
+                          end_point+'/json/?', lang, sort, ex_q)
         if res:
             res = json.loads(res)['response']
             facet = get_facet_query(res.get('facet_query', None))
@@ -251,6 +233,8 @@ def ecn_search():
             href=''.join(['/{0}/ecn_search?q='.format(get_locale()), urllib.quote(qval.encode('utf-8')),
                            '&sub={0}&sort={1}'.format(sub, sort),
                            '&num=20&page={0}'])
+            if ex_q:
+                href += '&ex_q=' + ex_q
             print 'phref:', href
             for item in res.get('result', []):
                 if item['content_description'].find('<strong>') == -1:
