@@ -24,6 +24,17 @@
        data-toggle="tooltip" title="Daily"> {{ _('The Daily') }} </a>&nbsp;&nbsp;|&nbsp;&nbsp;
   </div>
   {% include 'sort_by.html' %}
+      {% for key, value, vurl, checked in facet %}
+        {% if ex_q %}
+           {% if checked==1 %}
+             <a href="{{vurl}}"> {{key}}: {{value}}  X </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+           {% else %}
+             <a href="{{vurl}}"> {{key}}  </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+           {% endif %}
+        {% else %}
+             <a href="{{vurl}}"> {{key}}: {{value}} </a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        {% endif %}
+      {% endfor %}
 </form>
 
 
